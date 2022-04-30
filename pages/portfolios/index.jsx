@@ -1,6 +1,3 @@
-import Navbar from '@/components/shared/Navbar';
-
-
 const apiCall = () => {
 
     return new Promise((res, rej) => {
@@ -16,7 +13,6 @@ const Portfolios = (props) => {
 
     return (
         <>
-            <Navbar/>
             <div className="container">
                 <section className="section-title">
                     <div className="px-2">
@@ -81,6 +77,13 @@ Portfolios.getInitialProps = async () => {
     const data = await apiCall();
     return {...data}
 }
+
+// export async function getServerSideProps(context) {
+//     const data = await apiCall();
+//     return {
+//         props: { ...data }, // will be passed to the page component as props
+//     }
+// }
 
 
 export default Portfolios;

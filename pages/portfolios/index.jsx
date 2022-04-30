@@ -1,16 +1,28 @@
-
 import Navbar from '@/components/shared/Navbar';
 
-const Portfolios = () => {
+
+const apiCall = () => {
+
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res({testingData: "test data string"})
+        }, 5000)
+    })
+
+}
+
+
+const Portfolios = (props) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar/>
             <div className="container">
                 <section className="section-title">
                     <div className="px-2">
                         <div className="pt-5 pb-4">
                             <h1>Portfolios</h1>
+                            <div>{props.testingData}</div>
                         </div>
                     </div>
                 </section>
@@ -21,7 +33,8 @@ const Portfolios = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Card title</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p className="card-text fs-2">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text fs-2">Some quick example text to build on the card title and
+                                        make up the bulk of the card's content.</p>
                                 </div>
                                 <div className="card-footer no-border">
                                     <small className="text-muted">Last updated 3 mins ago</small>
@@ -33,7 +46,8 @@ const Portfolios = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Card title</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p className="card-text fs-2 ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text fs-2 ">Some quick example text to build on the card title
+                                        and make up the bulk of the card's content.</p>
                                 </div>
                                 <div className="card-footer no-border">
                                     <small className="text-muted">Last updated 3 mins ago</small>
@@ -45,7 +59,8 @@ const Portfolios = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Card title</h5>
                                     <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p className="card-text fs-2 ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p className="card-text fs-2 ">Some quick example text to build on the card title
+                                        and make up the bulk of the card's content.</p>
                                 </div>
                                 <div className="card-footer no-border">
                                     <small className="text-muted">Last updated 3 mins ago</small>
@@ -59,6 +74,13 @@ const Portfolios = () => {
     )
 }
 
+
+// Получаем асинхронные данные в пропсы
+// Не позволяет загрузить страницу, пока не придет ответ.
+Portfolios.getInitialProps = async () => {
+    const data = await apiCall();
+    return {...data}
+}
 
 
 export default Portfolios;
